@@ -133,6 +133,10 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Setup Docker (only macOS)
+        if: ${{ matrix.os == 'macos' }}
+        uses: douglascamata/setup-docker-macos-action@v1.0.1
+
       - name: Build ethrex-replay
         run: |
           ${{ matrix.cpu_flags }} ${{ matrix.gpu_flags }} cargo build --release --features "${{ matrix.features }}"
