@@ -52,6 +52,7 @@ jobs:
           - platform: macos-latest
             os: macos
             arch: aarch64
+            features: sp1,risc0
           - platform: macos-latest
             stack: l2
             features: l2,sp1,risc0
