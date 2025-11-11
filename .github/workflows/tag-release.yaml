@@ -138,8 +138,7 @@ jobs:
         run: |
           brew install colima
           brew install docker
-          brew install qemu
-          colima start --profile docker --driver qemu --cpu 4 --memory 8 --vm-type vz
+          colima start --profile docker
           colima status
           docker --version
 
