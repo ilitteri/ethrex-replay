@@ -135,7 +135,13 @@ jobs:
 
       - name: Setup Docker (only macOS)
         if: ${{ matrix.os == 'macos' }}
-        uses: douglascamata/setup-docker-macos-action@v1.0.1
+        run: |
+          brew install --cask colima
+          brew install docker
+          brew install qemu
+          colima start --profile docker --driver qemu --cpu 4 --memory 8 --vm-type vz
+          colima status
+          docker --version
 
       - name: Build ethrex-replay
         run: |
