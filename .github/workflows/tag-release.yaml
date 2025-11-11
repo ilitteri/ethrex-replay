@@ -121,7 +121,7 @@ jobs:
 
       - name: Install CUDA (only Linux x86 GPU)
         uses: Jimver/cuda-toolkit@v0.2.24
-        if: ${{ matrix.platform == 'ubuntu-22.04' && matrix.stack == 'l2_gpu' }}
+        if: ${{ matrix.platform == 'ubuntu-22.04' && (matrix.stack == 'l2_gpu' || matrix.stack == 'l1_gpu') }}
         id: cuda-toolkit
         with:
           cuda: "12.9.0"
