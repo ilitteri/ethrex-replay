@@ -52,10 +52,9 @@ jobs:
           - platform: macos-latest
             os: macos
             arch: aarch64
-            features: sp1,risc0
           - platform: macos-latest
             stack: l2
-            features: l2,sp1,risc0
+            features: l2
           - platform: ubuntu-22.04
             stack: l2
             features: l2,sp1,risc0
@@ -132,17 +131,6 @@ jobs:
         uses: arduino/setup-protoc@v3
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup Docker (only macOS)
-        if: ${{ matrix.os == 'macos' }}
-        run: |
-          brew install colima
-          brew install qemu
-          brew install docker
-          colima delete --profile docker --force || true
-          colima start --profile docker
-          colima status
-          docker --version
 
       - name: Build ethrex-replay
         run: |
