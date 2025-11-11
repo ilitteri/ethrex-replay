@@ -94,8 +94,7 @@ jobs:
       - name: Setup Rust Environment
         uses: ./.github/actions/setup-rust
 
-      - name: Install SP1 (only Linux)
-        if: ${{ matrix.os == 'linux' }}
+      - name: Install SP1
         env:
           SHELL: /bin/bash
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -109,8 +108,8 @@ jobs:
         with:
           platforms: amd64
 
-      - name: Install RISC0 (only Linux x86)
-        if: ${{ matrix.platform == 'ubuntu-22.04' }}
+      - name: Install RISC0 (only Linux x86 & MacOS)
+        if: ${{ matrix.platform == 'ubuntu-22.04' || matrix.os == 'macos' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
