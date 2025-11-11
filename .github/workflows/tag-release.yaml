@@ -136,7 +136,7 @@ jobs:
       - name: Setup Docker (only macOS)
         if: ${{ matrix.os == 'macos' }}
         run: |
-          brew install --cask colima
+          brew install colima
           brew install docker
           brew install qemu
           colima start --profile docker --driver qemu --cpu 4 --memory 8 --vm-type vz
